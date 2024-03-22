@@ -6,19 +6,17 @@ namespace AplicaçãoEmMVCcore.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        public IActionResult Index() //ação
         {
-            _logger = logger;
+            HomeModel home = new HomeModel();
+
+            home.Nome = "Gustavo Cunnha";
+            home.Email = "gustavocunha0401@gmail.com";
+
+            return View(home);
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
+        public IActionResult Privacy() 
         {
             return View();
         }

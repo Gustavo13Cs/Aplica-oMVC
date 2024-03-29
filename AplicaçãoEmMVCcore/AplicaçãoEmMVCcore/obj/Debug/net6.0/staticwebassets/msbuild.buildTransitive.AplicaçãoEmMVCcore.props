@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\AplicaçãoEmMVCcore.props" />
-</Project>

@@ -1,3 +1,4 @@
+using ControleDeContatos.Controllers;
 using ControleDeContatos.Data;
 using ControleDeContatos.Models;
 using ControleDeContatos.Repositorio;
@@ -8,27 +9,30 @@ namespace ControleDeContatos
     public class Program
     {
 
+        public Program(IConfiguration configuration) {
+            Configuration = configuration;
+        }    
+
+        public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
             services.AddControllersWithViews();
-
-            var provider = services.BuildServiceProvider();
-            var configurantion = provider.GetRequiredService<IConfiguration>();
-            services.AddDbContext<BancoContext>(item => item.UseSqlServer(configurantion.GetConnectionString("DataBase")));
-            services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
-            services.AddAuthorization();
-            services.AddAuthentication();
+            services.AddEntityFrameworkSqlServer()
+            .AddDbContext<BancoContext>(o => o.UseSqlServer(Configuration.GetConnectionString("DataBase")));
         }
 
         
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
+            
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
-
-
+            
+            builder.Services.AddControllersWithViews();
+            builder.Services.AddRazorPages();
+            builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -48,5 +52,7 @@ namespace ControleDeContatos
 
             app.Run();
         }
+
+        
     }
 }

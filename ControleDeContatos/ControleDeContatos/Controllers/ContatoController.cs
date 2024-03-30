@@ -9,7 +9,7 @@ namespace ControleDeContatos.Controllers
         private readonly IContatoRepositorio _contatoRepositorio;
         public ContatoController(IContatoRepositorio contatoRepositorio) {
 
-            _contatoRepositorio= contatoRepositorio;
+            _contatoRepositorio  = contatoRepositorio;
         }
         public IActionResult Index()
         {

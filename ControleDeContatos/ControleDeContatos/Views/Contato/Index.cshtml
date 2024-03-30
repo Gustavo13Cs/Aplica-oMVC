@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<ContatoModel>
+@{
     ViewData["Title"] = "Listagem de Contatos";
 }
 
@@ -20,51 +21,26 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Gustavo</td>
-                <td>gustavocunha0401@gmail.com</td>
-                <td>79 99923 0667</td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <a role="button" class="btn btn-primary" asp-controller="Contato" asp-action="Editar">Editar</a>
-                        
-                        <a role="button" class="btn btn-danger" asp-controller="Contato" asp-action="ApagarConfirmacao">Apagar</a>
-                    </div>
-                </td>
+           @if (Model != null && Model.Any())
+            {
+                foreach (ContatoModel contato in Model)
+                {
+                    <tr>
+                        <th scope="row">@contato.Id</th>
+                        <td>@contato.Name</td>
+                        <td>@contato.Email</td>
+                        <td>@contato.Celular</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a role="button" class="btn btn-primary" asp-route-id="@contato.Id" asp-controller="Contato" asp-action="Editar">Editar</a>
 
+                                <a role="button" class="btn btn-danger" asp-route-id="@contato.Id" asp-controller="Contato" asp-action="ApagarConfirmacao">Apagar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
 
-            </tr>
-
-            <tr>
-                <th scope="row">1</th>
-                <td>Gustavo</td>
-                <td>gustavocunha0401@gmail.com</td>
-                <td>79 99923 0667</td>
-
-                <td>
-                    <div class="btn-group" role="group">
-                        <a role="button" class="btn btn-primary">Editar</a>
-                        
-                        <a role="button" class="btn btn-danger">Apagar</a>
-                    </div>
-                </td>
-            </tr>
-
-            <tr>
-                <th scope="row">1</th>
-                <td>Gustavo</td>
-                <td>gustavocunha0401@gmail.com</td>
-                <td>79 99923 0667</td>
-
-                <td>
-                    <div class="btn-group" role="group">
-                        <a role="button" class="btn btn-primary">Editar</a>
-                        
-                        <a role="button" class="btn btn-danger">Apagar</a>
-                    </div>
-                </td>
-            </tr>
 
         </tbody>
     </table>

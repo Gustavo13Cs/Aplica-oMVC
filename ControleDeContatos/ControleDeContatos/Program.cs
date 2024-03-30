@@ -14,15 +14,8 @@ namespace ControleDeContatos
         }    
 
         public IConfiguration Configuration { get; }
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddMvc();
-            services.AddControllersWithViews();
-            services.AddEntityFrameworkSqlServer()
-            .AddDbContext<BancoContext>(o => o.UseSqlServer(Configuration.GetConnectionString("DataBase")));
-        }
-
         
+
         static void Main(string[] args)
         {
             
@@ -31,8 +24,13 @@ namespace ControleDeContatos
             // Add services to the container.
             
             builder.Services.AddControllersWithViews();
-            builder.Services.AddRazorPages();
+
+            builder.Services.AddDbContext<BancoContext>(options => options.UseSqlServer
+            (builder.Configuration.GetConnectionString("DataBase")));
             builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
+            builder.Services.AddRazorPages();
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

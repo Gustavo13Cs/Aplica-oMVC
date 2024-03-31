@@ -28,7 +28,9 @@ namespace ControleDeContatos
             builder.Services.AddDbContext<BancoContext>(options => options.UseSqlServer
             (builder.Configuration.GetConnectionString("DataBase")));
             builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
+            builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
             builder.Services.AddRazorPages();
+
 
 
             var app = builder.Build();

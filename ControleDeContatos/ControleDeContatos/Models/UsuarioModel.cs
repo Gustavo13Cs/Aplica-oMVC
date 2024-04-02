@@ -20,6 +20,11 @@ namespace ControleDeContatos.Models
         [Required(ErrorMessage = "Digite a senha do usuario")]
         public string Senha { get; set; }
         public DateTime DataDeCadastro { get; set; }
-        public DateTime? DataDeAtualizacao { get; set; } 
+        public DateTime? DataDeAtualizacao { get; set; }
+        
+        public bool Senhavalida(string senha)
+        {
+            return Senha == senha;
+        }
     }
 }

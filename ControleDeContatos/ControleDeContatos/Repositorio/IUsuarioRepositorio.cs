@@ -9,6 +9,8 @@ namespace ControleDeContatos.Repositorio
         UsuarioModel Adicionar(UsuarioModel usuario);
         UsuarioModel Atualizar(UsuarioModel usuario);
 
+        UsuarioModel BuscarPorLogin(string login);
+
         bool Apagar(int id);
     }
 }

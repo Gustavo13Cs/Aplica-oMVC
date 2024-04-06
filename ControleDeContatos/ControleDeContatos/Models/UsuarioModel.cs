@@ -1,4 +1,5 @@
 ﻿using ControleDeContatos.Enums;
+using ControleDeContatos.Helper;
 using System.ComponentModel.DataAnnotations;
 
 namespace ControleDeContatos.Models
@@ -24,7 +25,12 @@ namespace ControleDeContatos.Models
         
         public bool Senhavalida(string senha)
         {
-            return Senha == senha;
+            return Senha == senha.GerarHash();
+        }
+
+        public void SetSenhaHash() // só e possivel pq colocamos o this no metodo, assim podemos usar o metodo aqui
+        {
+            Senha = Senha.GerarHash();
         }
     }
 }

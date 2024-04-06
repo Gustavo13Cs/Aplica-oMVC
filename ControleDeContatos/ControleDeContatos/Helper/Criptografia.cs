@@ -1,0 +1,26 @@
+﻿using System.Security.Cryptography;
+using System.Text;
+
+namespace ControleDeContatos.Helper
+{
+    public static class Criptografia
+    {
+        public static string GerarHash(this string valor) // vai virar um extensão da string
+        {
+            var hash = SHA1.Create();
+            var encoding = new ASCIIEncoding();
+            var array = encoding.GetBytes(valor);  //vai pegar cada letra ou numero e transformar em Bytes
+            
+            array = hash.ComputeHash(array);
+
+            var strHexa = new StringBuilder();
+
+            foreach (var item in array)
+            {
+                strHexa.Append(item.ToString("x2"));
+            }
+
+            return strHexa.ToString();
+        }
+    }
+}

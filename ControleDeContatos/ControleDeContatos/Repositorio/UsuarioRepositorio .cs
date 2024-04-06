@@ -21,6 +21,7 @@ namespace ControleDeContatos.Repositorio
             // gravar no banco de dados
 
             usuario.DataDeCadastro = DateTime.Now;
+            usuario.SetSenhaHash(); //transforma senha criada pra cripotografia
             _bancoContext.Usuarios.Add(usuario);
             _bancoContext.SaveChanges(); //e como se fosse uma confirmação
             return usuario;

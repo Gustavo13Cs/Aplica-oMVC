@@ -70,5 +70,23 @@ namespace ControleDeContatos.Repositorio
         {
             return _bancoContext.Usuarios.FirstOrDefault(x => x.Email.ToUpper() == email.ToUpper() && x.Login.ToUpper() == login.ToUpper());
         }
+
+        public UsuarioModel AlterarSenha(AlterarSenhaModel alterarSenhaModel)
+        {
+            UsuarioModel usuarioDb = ListarPorID(alterarSenhaModel.Id);
+
+            if (usuarioDb == null) throw new Exception("Houve um erro na atualização da senha,usuario não encontrado");
+
+            if (!usuarioDb.Senhavalida(alterarSenhaModel.SenhaAtual)) throw new Exception("Senha atual não confere");
+
+            if (usuarioDb.Senhavalida(alterarSenhaModel.NovaSenha)) throw new Exception("Nova senha deve ser diferente da senha atual");
+
+            usuarioDb.SetNovaSenha(alterarSenhaModel.NovaSenha);
+            usuarioDb.DataDeAtualizacao = DateTime.Now;
+            _bancoContext.Usuarios.Update(usuarioDb);
+            _bancoContext.SaveChanges();
+
+            return usuarioDb;
+        }
     }
 }

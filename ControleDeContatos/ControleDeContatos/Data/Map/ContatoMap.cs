@@ -9,7 +9,7 @@ namespace ControleDeContatos.Data.Map
         public void Configure(EntityTypeBuilder<ContatoModel> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.HasOne(x => x.Usuario);
+            builder.HasOne(x => x.Usuario); 
         }
     }
 }

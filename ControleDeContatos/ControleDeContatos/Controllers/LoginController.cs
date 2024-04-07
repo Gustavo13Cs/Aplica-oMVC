@@ -9,16 +9,18 @@ namespace ControleDeContatos.Controllers
     {
         private readonly IUsuarioRepositorio _usuarioRepositorio;
         private readonly ISessao _sessao;
+        private readonly IEmail _email;
 
-        public LoginController(IUsuarioRepositorio usuarioRepositorio, ISessao sessao)
+        public LoginController(IUsuarioRepositorio usuarioRepositorio, ISessao sessao, IEmail email)
         {
             _usuarioRepositorio = usuarioRepositorio;
             _sessao = sessao;
+            _email = email;
         }
 
         public IActionResult Index()
         {
-            // se o suarui estiver logado, redirecionar para a home
+            // se o usuario estiver logado, redirecionar para a home
 
             if (_sessao.BuscarSessaoDoUsuario() != null) return RedirectToAction("Index", "Home");
             
@@ -80,8 +82,19 @@ namespace ControleDeContatos.Controllers
                     {
                         string novaSenha = usuario.GerarNovaSenha();
                         
+                        string mensagem = $"Sua nova senha é: {novaSenha}";
 
-                        TempData["MensagemSucesso"] = $"Enviamos para seu e-mail cadastrado uma nova senha";
+                        bool emailEnviado = _email.Enviar(usuario.Email, "Sistema de Contatos - Nova Senha", mensagem);
+                        if (emailEnviado)
+                        {
+                            _usuarioRepositorio.Atualizar(usuario);
+                            TempData["MensagemSucesso"] = $"Enviamos para seu e-mail cadastrado uma nova senha";
+                        }
+                        else
+                        {
+                            TempData["MensagemErro"] = $"Não conseguimos enviar o e-mail. Por favor,Verifique os dados informados.";
+                        }
+
                         return RedirectToAction("Index","Login");
                     }
                     TempData["MensagemErro"] = $"Não conseguimos redefinir sua senha. Por favor,Verifique os dados informados.";

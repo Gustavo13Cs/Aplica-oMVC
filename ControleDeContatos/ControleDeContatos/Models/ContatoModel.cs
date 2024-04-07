@@ -14,6 +14,8 @@ namespace ControleDeContatos.Models
         [Required (ErrorMessage = "Digite o celular do contato")]
         [Phone(ErrorMessage ="O Celular informado não é valido!")]
         public string Celular { get; set; }
+        public int? UsuarioID { get; set; }
+        public UsuarioModel Usuario { get; set; }
 
     }
 }

@@ -12,9 +12,9 @@ namespace ControleDeContatos.Repositorio
         }
 
 
-        public List<ContatoModel> BuscarTodos()
+        public List<ContatoModel> BuscarTodos(int usuarioID)
         {
-            return _bancoContext.Contatos.ToList(); //ta carregando tudo que ta no banco de dados
+            return _bancoContext.Contatos.Where(x => x.UsuarioID == usuarioID).ToList(); //ta carregando tudo que ta no banco de dados
         }
         public ContatoModel Adicionar(ContatoModel contato)
         {

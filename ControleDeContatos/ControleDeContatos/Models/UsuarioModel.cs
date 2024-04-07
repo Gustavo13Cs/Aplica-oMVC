@@ -44,5 +44,7 @@ namespace ControleDeContatos.Models
         {
             Senha = novaSenha.GerarHash();
         }
+
+        public virtual List<ContatoModel> Contatos { get; set; }
     }
 }

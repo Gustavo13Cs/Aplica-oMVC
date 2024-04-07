@@ -5,23 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ControleDeContatos.Migrations
 {
-    public partial class CriacaoTabelaUsuarios : Migration
+    public partial class CriandoTabelasContatoseUsuarios : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_ContatoModel",
-                table: "ContatoModel");
-
-            migrationBuilder.RenameTable(
-                name: "ContatoModel",
-                newName: "Contatos");
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_Contatos",
-                table: "Contatos",
-                column: "Id");
-
             migrationBuilder.CreateTable(
                 name: "Usuarios",
                 columns: table => new
@@ -40,25 +27,41 @@ namespace ControleDeContatos.Migrations
                 {
                     table.PrimaryKey("PK_Usuarios", x => x.id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Contatos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Celular = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UsuarioID = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Contatos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Contatos_Usuarios_UsuarioID",
+                        column: x => x.UsuarioID,
+                        principalTable: "Usuarios",
+                        principalColumn: "id");
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Contatos_UsuarioID",
+                table: "Contatos",
+                column: "UsuarioID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Contatos");
+
+            migrationBuilder.DropTable(
                 name: "Usuarios");
-
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_Contatos",
-                table: "Contatos");
-
-            migrationBuilder.RenameTable(
-                name: "Contatos",
-                newName: "ContatoModel");
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_ContatoModel",
-                table: "ContatoModel",
-                column: "Id");
         }
     }
 }

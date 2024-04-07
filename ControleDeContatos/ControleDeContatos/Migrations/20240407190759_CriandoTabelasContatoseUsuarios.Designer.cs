@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControleDeContatos.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    [Migration("20240330235822_CriacaoTabelaUsuarios")]
-    partial class CriacaoTabelaUsuarios
+    [Migration("20240407190759_CriandoTabelasContatoseUsuarios")]
+    partial class CriandoTabelasContatoseUsuarios
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,7 +44,12 @@ namespace ControleDeContatos.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("UsuarioID")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UsuarioID");
 
                     b.ToTable("Contatos");
                 });
@@ -85,6 +90,20 @@ namespace ControleDeContatos.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("ControleDeContatos.Models.ContatoModel", b =>
+                {
+                    b.HasOne("ControleDeContatos.Models.UsuarioModel", "Usuario")
+                        .WithMany("Contatos")
+                        .HasForeignKey("UsuarioID");
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("ControleDeContatos.Models.UsuarioModel", b =>
+                {
+                    b.Navigation("Contatos");
                 });
 #pragma warning restore 612, 618
         }

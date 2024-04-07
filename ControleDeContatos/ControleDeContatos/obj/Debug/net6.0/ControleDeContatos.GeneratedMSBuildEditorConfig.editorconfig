@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = C:\Users\gc126\OneDrive\Documentos\GitHub\Aplica-oMVC\ControleDeContatos\ControleDeContatos
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/gc126/OneDrive/Documentos/GitHub/Aplica-oMVC/ControleDeContatos/ControleDeContatos/Views/AlterarSenha/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWx0ZXJhclNlbmhhXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/gc126/OneDrive/Documentos/GitHub/Aplica-oMVC/ControleDeContatos/ControleDeContatos/Views/Contato/ApagarConfirmacao.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGF0b1xBcGFnYXJDb25maXJtYWNhby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

@@ -5,7 +5,7 @@ namespace ControleDeContatos.Models
 {
     public class UsuarioSemSenhaModel
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         [Required(ErrorMessage = "Digite o nome do usuario")]
         public string  Nome { get; set; }
         [Required(ErrorMessage = "Digite o Login do usuario")]

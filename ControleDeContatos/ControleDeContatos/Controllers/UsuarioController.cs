@@ -28,8 +28,6 @@ namespace ControleDeContatos.Controllers
         [HttpPost]
         public IActionResult Criar(UsuarioModel usuario)
         {
-
-
             try
             {
                 if (ModelState.IsValid)
@@ -48,9 +46,6 @@ namespace ControleDeContatos.Controllers
                 TempData["MensagemErro"] = $"Ops, não conseguimos codastrar seu usuario, Tente novamente, detalhe do erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
-
-
-
         }
 
         public IActionResult ApagarConfirmacao(int id)
@@ -101,7 +96,7 @@ namespace ControleDeContatos.Controllers
                     usuario = new UsuarioModel()
 
                     {
-                        id = usuarioSemSenhaModel.id,
+                        Id = usuarioSemSenhaModel.Id,
                         Nome = usuarioSemSenhaModel.Nome,
                         Login = usuarioSemSenhaModel.Login,
                         Email = usuarioSemSenhaModel.Email,

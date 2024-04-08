@@ -6,6 +6,11 @@
 $(document).ready(function () {
     getDatatable('#table-contatos');
     getDatatable('#table-usuarios');
+
+
+    $('.btn-total-contatos').click(function () {
+        $('#modalContatosUsuarios').modal();
+    });
 })
 
 function getDatatable(id) {

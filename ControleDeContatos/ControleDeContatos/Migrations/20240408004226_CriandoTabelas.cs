@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ControleDeContatos.Migrations
 {
-    public partial class CriandoTabelasContatoseUsuarios : Migration
+    public partial class CriandoTabelas : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,7 @@ namespace ControleDeContatos.Migrations
                 name: "Usuarios",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Login = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -25,7 +25,7 @@ namespace ControleDeContatos.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Usuarios", x => x.id);
+                    table.PrimaryKey("PK_Usuarios", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -46,7 +46,7 @@ namespace ControleDeContatos.Migrations
                         name: "FK_Contatos_Usuarios_UsuarioID",
                         column: x => x.UsuarioID,
                         principalTable: "Usuarios",
-                        principalColumn: "id");
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(

@@ -26,7 +26,7 @@ namespace ControleDeContatos.Controllers
             try
             {
                 UsuarioModel usuarioLogado = _sessao.BuscarSessaoDoUsuario();
-                alterarSenhaModel.Id = usuarioLogado.id;
+                alterarSenhaModel.Id = usuarioLogado.Id;
                 if (ModelState.IsValid)
                 {
                     _usuarioRepositorio.AlterarSenha(alterarSenhaModel);

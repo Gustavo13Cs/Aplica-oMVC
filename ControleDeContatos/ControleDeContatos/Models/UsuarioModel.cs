@@ -6,20 +6,20 @@ namespace ControleDeContatos.Models
 {
     public class UsuarioModel
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         [Required(ErrorMessage = "Digite o nome do usuario")]
-        public string  Nome { get; set; }
+        public string? Nome { get; set; }
         [Required(ErrorMessage = "Digite o Login do usuario")]
-        public string Login { get; set; }
+        public string? Login { get; set; }
 
         [Required(ErrorMessage = "Digite o email do usuario")]
         [EmailAddress(ErrorMessage = "O E-mail informado não é valido!")]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
         [Required(ErrorMessage = "Informe o perfil do usuário")]
         public PerfilEnum? Perfil { get; set; }
         [Required(ErrorMessage = "Digite a senha do usuario")]
-        public string Senha { get; set; }
+        public string? Senha { get; set; }
         public DateTime DataDeCadastro { get; set; }
         public DateTime? DataDeAtualizacao { get; set; }
         
@@ -45,6 +45,6 @@ namespace ControleDeContatos.Models
             Senha = novaSenha.GerarHash();
         }
 
-        public virtual List<ContatoModel> Contatos { get; set; }
+        public virtual List<ContatoModel>? Contatos { get; set; }
     }
 }

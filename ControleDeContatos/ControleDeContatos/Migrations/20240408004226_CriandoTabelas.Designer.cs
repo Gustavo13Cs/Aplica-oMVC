@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControleDeContatos.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    [Migration("20240407190759_CriandoTabelasContatoseUsuarios")]
-    partial class CriandoTabelasContatoseUsuarios
+    [Migration("20240408004226_CriandoTabelas")]
+    partial class CriandoTabelas
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -56,11 +56,11 @@ namespace ControleDeContatos.Migrations
 
             modelBuilder.Entity("ControleDeContatos.Models.UsuarioModel", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime?>("DataDeAtualizacao")
                         .HasColumnType("datetime2");
@@ -87,7 +87,7 @@ namespace ControleDeContatos.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Usuarios");
                 });

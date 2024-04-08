@@ -11,10 +11,13 @@ namespace ControleDeContatos.Repositorio
             _bancoContext = bancoContext;
         }
 
-
-        public List<ContatoModel> BuscarTodos(int usuarioID)
+        public ContatoModel ListarPorID(int id)
         {
-            return _bancoContext.Contatos.Where(x => x.UsuarioID == usuarioID).ToList(); //ta carregando tudo que ta no banco de dados
+            return _bancoContext.Contatos.FirstOrDefault(x => x.Id == id);
+        }
+        public List<ContatoModel> BuscarTodos(int usuarioId)
+        {
+            return _bancoContext.Contatos.Where(x => x.UsuarioID == usuarioId).ToList(); //ta carregando tudo que ta no banco de dados
         }
         public ContatoModel Adicionar(ContatoModel contato)
         {
@@ -23,11 +26,6 @@ namespace ControleDeContatos.Repositorio
             _bancoContext.Contatos.Add(contato);
             _bancoContext.SaveChanges(); //e como se fosse uma confirmação
             return contato;
-        }
-
-        public ContatoModel ListarPorID(int id)
-        {
-            return _bancoContext.Contatos.FirstOrDefault(x => x.Id == id);
         }
 
         public ContatoModel Atualizar(ContatoModel contato)

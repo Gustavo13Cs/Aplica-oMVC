@@ -1,5 +1,6 @@
 ﻿using ControleDeContatos.Data;
 using ControleDeContatos.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ControleDeContatos.Repositorio
 {
@@ -14,7 +15,9 @@ namespace ControleDeContatos.Repositorio
 
         public List<UsuarioModel> BuscarTodos()
         {
-            return _bancoContext.Usuarios.ToList(); //ta carregando tudo que ta no banco de dados
+            return _bancoContext.Usuarios
+                .Include(x => x.Contatos)
+                .ToList(); //ta carregando tudo que ta no banco de dados
         }
         public UsuarioModel Adicionar(UsuarioModel usuario)
         {
@@ -29,12 +32,12 @@ namespace ControleDeContatos.Repositorio
 
         public UsuarioModel ListarPorID(int id)
         {
-            return _bancoContext.Usuarios.FirstOrDefault(x => x.id == id);
+            return _bancoContext.Usuarios.FirstOrDefault(x => x.Id == id);
         }
 
         public UsuarioModel Atualizar(UsuarioModel usuario)
         {
-            UsuarioModel usuarioDB = ListarPorID(usuario.id);
+            UsuarioModel usuarioDB = ListarPorID(usuario.Id);
             if (usuarioDB == null) throw new System.Exception("Houve um erro na atualização do usuario!");
 
             usuario.Nome = usuario.Nome;

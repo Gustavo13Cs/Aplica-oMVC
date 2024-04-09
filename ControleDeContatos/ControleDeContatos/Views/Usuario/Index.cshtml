@@ -28,7 +28,7 @@
     
     <h1 class="display-4">Listagem de Usuarios</h1>
 
-    <table class="display" id="table-usuarios" style="width:100%" >
+    <table id="table-usuarios" class="display" style="width:100%">
         <thead>
             <tr>
                 <th scope="col">#</th>
@@ -41,6 +41,7 @@
                 <th scope="col"></th>
             </tr>
         </thead>
+
         <tbody>
            @if (Model != null && Model.Any())
             {
@@ -72,27 +73,27 @@
             {
                 <tr class="odd"><td valign="top" colspan="5">Nenhum usuário encontrado</td></tr>
             }
-
-
         </tbody>
     </table>
 
     <div id="modalContatosUsuarios" class="modal" tabindex="-1">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Listagem de contatos</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+
                 <div class="modal-body">
-                    <table class="display" id="table-contatos" style="width:100%">
+                    <table id="table-contatos" class="display" style="width:100%">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Nome</th>
                                 <th scope="col">E-mail</th>
                                 <th scope="col">Celular</th>
-
                             </tr>
                         </thead>
                         <tbody>
@@ -102,11 +103,11 @@
                                 <td>A</td>
                                 <td>A</td>
                             </tr>
-
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
+
 </div>

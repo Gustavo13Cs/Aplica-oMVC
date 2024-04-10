@@ -22,5 +22,5 @@ Você pode acessar os arquivos do projeto clicando [aqui](https://github.com/Gus
 
 💙 Acompanhe mais pelo LinkedIn. [Gustavo Cunha](https://www.linkedin.com/in/gustavo-cunha-s/)
 
-![Captura de tela 2023-02-13 002701](https://r2.easyimg.io/6jjj5vvxt/captura_de_tela_2024-04-10_142004.png)
+![Captura de tela 2023-02-13 002701](https://r2.easyimg.io/6yzeh3qh5/captura_de_tela_2024-04-10_142004.png)
 

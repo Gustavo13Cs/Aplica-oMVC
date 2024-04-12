@@ -19,6 +19,7 @@
 
 ## 📁 Acesso ao projeto
 Você pode acessar os arquivos do projeto clicando [aqui](https://github.com/Gustavo13Cs/Aplica-oMVC/tree/main/ControleDeContatos).
+Postagem no LinkedIn [aqui](https://www.linkedin.com/feed/update/urn:li:activity:7184560208919085059/).
 
 💙 Acompanhe mais pelo LinkedIn. [Gustavo Cunha](https://www.linkedin.com/in/gustavo-cunha-s/)
 

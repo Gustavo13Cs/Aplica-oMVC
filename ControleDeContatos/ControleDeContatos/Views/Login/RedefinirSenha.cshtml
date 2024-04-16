@@ -24,7 +24,10 @@
         <input type="text" asp-for="Email" class="form-control" id="Email">
         @Html.ValidationMessageFor(x => x.Email)
     </div>
-
-    <a type="submit" class="btn btn-primary btn-block">Redefinir Senha</a>
-    <a class="btn btn-secondary btn-block" asp-controller="Login" asp-action="Index" role="button">Voltar</a>
+    <a class="d-grid gap-2">
+        <button type="submit" class="btn btn-primary btn-block">Redefinir Senha</button>
+    </a>
+    <a class="btn btn-secondary d-grid gap-2" asp-controller="Login" asp-action="Index" role="button">Voltar
+        
+    </a>
 </form>

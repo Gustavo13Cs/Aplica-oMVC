@@ -1,14 +1,10 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
-
-$(document).ready(function () {
+﻿$(document).ready(function () {
 
     getDatatable('#table-contatos');
     getDatatable('#table-usuarios');
 
-    $('.btn-total-contatos').click(function () {
+    $(document).on('click','.btn-total-contatos',function ()
+    {
         var usuarioId = $(this).attr('usuario-id');
        
         $.ajax({
